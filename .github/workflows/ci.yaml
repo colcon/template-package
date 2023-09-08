@@ -25,6 +25,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - run: |
+          find * -type f | xargs sed -i 's/template-package/colcon-package-name/g'
+          find * -type f | xargs sed -i 's/template_package/colcon_package_name/g'
+          mv template_package colcon_package_name
       - uses: actions/setup-python@v4
         with:
           python-version: ${{matrix.python}}
